@@ -1,0 +1,8 @@
+<p *ngIf="error">usuario o contraseña incorrectos</p>
+<form (submit)="onLogin()">
+	<label for="username">Usuario</label>
+	<input type="email" name="username" [(ngModel)]="credentials.username" /><br>
+	<label for="password">Contraseña</label>
+	<input type="password" name="password" [(ngModel)]="credentials.password" />
+	<button>Login</button>
+</form>
