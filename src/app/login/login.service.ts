@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import { environment } from './../../environments/environment';
-import { AuthService } from './../shared/services/auth.service';
 import 'rxjs';
+
+import { AuthService } from './../shared/services/auth.service';
+import { Http } from '@angular/http';
+import { Injectable } from '@angular/core';
+import { environment } from './../../environments/environment';
 
 @Injectable()
 export class LoginService {
@@ -25,11 +26,12 @@ export class LoginService {
   		.toPromise();
   }
 
-  logout() {
-  	this.authService.clearToken();
+  logout(): boolean {
+    this.authService.clearToken();
+    return false;
   }
 
-  getToken() {
+  getToken(): string | boolean {
   	return JSON.parse(localStorage.getItem('token')) || false;
   }
 

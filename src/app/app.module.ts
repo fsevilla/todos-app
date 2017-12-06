@@ -19,6 +19,7 @@ import { PermissionGuard } from './shared/guards/permission.guard';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { LogoutComponent } from './logout/logout.component';
 import { HeaderComponent } from './header/header.component';
+import { TodoStatusDirective } from './shared/directives/todo-status.directive';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { HeaderComponent } from './header/header.component';
     LoginComponent,
     ForbiddenComponent,
     LogoutComponent,
-    HeaderComponent
+    HeaderComponent,
+    TodoStatusDirective
   ],
   imports: [
     BrowserModule,
