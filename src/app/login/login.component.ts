@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { LoginService } from './login.service';
 import { PermissionsService } from './../shared/services/permissions.service';
 import { Router } from '@angular/router';
@@ -26,11 +27,13 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  onLogin() {
+  onLogin(): void {
+    console.log('login...');
   	this.loginService.login(this.credentials)
   		.then(response => {
         this.permissionsService.get()
           .then(response => {
+            console.log(response);
             this.router.navigate(['/todos']);
           });
   		})

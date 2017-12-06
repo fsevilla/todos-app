@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  api: 'http://localhost:8000/api/',
+  api: 'http://192.168.0.47:8000/api/',
   client: {
   	grant_type: 'password',
   	client_id: 2,
