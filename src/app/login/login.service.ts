@@ -27,6 +27,7 @@ export class LoginService {
 
   logout() {
   	this.authService.clearToken();
+    this.authService.clearPermissions();
   }
 
   getToken() {

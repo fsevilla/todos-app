@@ -16,17 +16,27 @@ export class PermissionsService {
   get() {
   	return this.http.get(`${environment.api}user/permissions`)
   		.map(response => {
-        let permissions = response.json(),
-          permsObj = {};
+     console.log('Permissions: ', response);
+     let permissions = response.json(),
+       permissionsObj = {};
 
-        for(var k in permissions) {
-          permsObj[k] = permissions[k][0].permission;
-        }
+     for(const k in permissions) {
+       if(permissions.hasOwnProperty(k)) {
+         permissionsObj[k] = permissions[k][0].permission;
+       }
+     }
 
-  			this.authService.savePermissions(permsObj);
-  			return response.json();
+     this.authService.savePermissions(permissionsObj);
+     return permissionsObj;
   		})
   		.toPromise();
+  }
+
+  hasPermission(resource: string, inActions: Array<string>) {
+    let permissions = this.authService.getPermissions(),
+        thePermission = permissions[resource];
+
+    return inActions.indexOf(thePermission) !== -1;
   }
 
 }

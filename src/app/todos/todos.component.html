@@ -1,6 +1,8 @@
 <h2>My Todos</h2>
+<button [permissions]="{r:'todos', p:'write'}" class="btn btn-success">Nueva tarea</button>
+<span>Texto cualquiera</span>
 <ul>
 	<li *ngFor="let todo of todos">
-		<a routerLink="/todos/{{todo.id}}">{{todo.name}}</a>
+		<a [status]="todo.status_id" routerLink="/todos/{{todo.id}}">{{todo.name}}</a>
 	</li>
 </ul>

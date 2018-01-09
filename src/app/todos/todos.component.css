@@ -1,0 +1,15 @@
+.new{
+	color: orange;
+}
+
+.in-progress{
+	color: blue;
+}
+
+.done{
+	color: green;
+}
+
+button{
+	display: inline-block;
+}

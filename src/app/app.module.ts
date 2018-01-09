@@ -11,14 +11,16 @@ import { TodoDetailsComponent } from './todos/todo-details/todo-details.componen
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
 import { AuthService } from './shared/services/auth.service';
-import { AuthGuard } from './shared/guards/auth.guard';
 import { UnAuthGuard } from './shared/guards/un-auth.guard';
 import { PermissionsService } from './shared/services/permissions.service';
 import { HttpClient } from './shared/services/http-client.service';
-import { PermissionGuard } from './shared/guards/permission.guard';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { LogoutComponent } from './logout/logout.component';
 import { HeaderComponent } from './header/header.component';
+import { AuthGuard } from './shared/guards/auth.guard';
+import { PermissionsGuard } from './shared/guards/permissions.guard';
+import { TodoStatusDirective } from './todos/directives/todo-status.directive';
+import { PermissionsDirective } from './shared/directives/permissions.directive';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { HeaderComponent } from './header/header.component';
     LoginComponent,
     ForbiddenComponent,
     LogoutComponent,
-    HeaderComponent
+    HeaderComponent,
+    TodoStatusDirective,
+    PermissionsDirective
   ],
   imports: [
     BrowserModule,
@@ -40,11 +44,11 @@ import { HeaderComponent } from './header/header.component';
     TodoService,
     LoginService,
     AuthService,
-    AuthGuard,
     UnAuthGuard,
     PermissionsService,
     HttpClient,
-    PermissionGuard
+    AuthGuard,
+    PermissionsGuard
    ],
   bootstrap: [AppComponent]
 })
