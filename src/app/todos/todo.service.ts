@@ -3,10 +3,11 @@ import { HttpClient } from './../shared/services/http-client.service';
 import { environment } from './../../environments/environment';
 import { AuthService } from './../shared/services/auth.service';
 import 'rxjs';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class TodoService {
-
+  childLoaded = new BehaviorSubject(false);
   api = environment.api+'todos/';
 
   constructor(

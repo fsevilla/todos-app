@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TodoService } from './../todo.service';
 
@@ -7,9 +7,10 @@ import { TodoService } from './../todo.service';
   templateUrl: './todo-details.component.html',
   styleUrls: ['./todo-details.component.css']
 })
-export class TodoDetailsComponent implements OnInit {
+export class TodoDetailsComponent implements OnInit, OnDestroy {
 
   private todo = {};
+  statusClass = true;
 
   constructor(
   	private activatedRoute: ActivatedRoute,
@@ -22,10 +23,16 @@ export class TodoDetailsComponent implements OnInit {
   		});
   }
 
+  ngOnDestroy() {
+    this.todoService.childLoaded.next(false);
+  }
+
   getTodoDetails(id: number) {
   	this.todoService.getTodo(id)
   		.then(response => {
+        this.todoService.childLoaded.next(true);
   			this.todo = response;
+        this.statusClass = false;
   		})
   }
 

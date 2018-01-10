@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 
 import { routing } from './app.routing';
 import { AppComponent } from './app.component';
@@ -38,6 +41,9 @@ import { PermissionsDirective } from './shared/directives/permissions.directive'
     BrowserModule,
     HttpModule,
     FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    ToastContainerModule,
     routing
   ],
   providers: [

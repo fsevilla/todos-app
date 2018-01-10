@@ -20,17 +20,19 @@ const appRoutes: Routes = [
 		data: {
 			resource: 'todos',
 			permissions: ['read', 'write']
-		} 
+		},
+		children: [
+			{
+			path: ':id', 
+			component: TodoDetailsComponent,
+			canActivate: [AuthGuard, PermissionsGuard],
+			data: {
+					resource: 'todos',
+					permissions: ['read', 'write']
+				}
+	 		},
+		]
 	},
-	{
-		path: 'todos/:id', 
-		component: TodoDetailsComponent,
-		canActivate: [AuthGuard, PermissionsGuard],
-		data: {
-			resource: 'todos',
-			permissions: ['read', 'write']
-		}
-	 },
 	{path: 'forbidden', component: ForbiddenComponent, canActivate: [AuthGuard] }
 ];
 

@@ -1,8 +1,11 @@
-<h2>My Todos</h2>
-<button [permissions]="{r:'todos', p:'write'}" class="btn btn-success">Nueva tarea</button>
-<span>Texto cualquiera</span>
-<ul>
-	<li *ngFor="let todo of todos">
-		<a [status]="todo.status_id" routerLink="/todos/{{todo.id}}">{{todo.name}}</a>
-	</li>
-</ul>
+<div class="wrapper" [@fade]="statusClass">
+	<h2>My Todos</h2>
+	<button [permissions]="{r:'todos', p:'write'}" class="btn btn-success">Nueva tarea</button>
+	<span>Texto cualquiera</span>
+	<ul>
+		<li *ngFor="let todo of todos">
+			<a [status]="todo.status_id" (click)="onNavigate(todo.id)">{{todo.name}}</a>
+		</li>
+	</ul>
+</div>
+<router-outlet></router-outlet>
